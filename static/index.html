@@ -3,37 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Potato Leaf Disease Classifier</title>
     <style>
-    body { font-family: sans-serif; padding: 2rem; }
-    input, button { margin: 1rem 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #preview {
+            max-width: 300px;
+            margin: 20px auto;
+            display: none;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #444;
+        }
     </style>
 </head>
 <body>
-    <h1>Upload a Potato Leaf Images</h1>
-    <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" />
+
+    <h1>Potato Leaf Disease Classifier</h1>
+    <p>Upload an image of a potato leaf to detect if it's healthy or has a disease.</p>
+
+    <input type="file" id="fileInput" accept="image/*">
+    <br>
+    <img id="preview" alt="Image Preview">
+    <br>
     <button onclick="predict()">Predict</button>
-    <h3 id="result"></h3>
+
+    <div id="result"></div>
+
     <script>
-    async function predict() {
-      const input = document.getElementById("fileInput");
-      if (!input.files.length) {
-        alert("Please select an image");
-        return;
-      }
+        const fileInput = document.getElementById("fileInput");
+        const preview = document.getElementById("preview");
+        const resultDiv = document.getElementById("result");
 
-      const formData = new FormData();
-      formData.append("file", input.files[0]);
+        fileInput.addEventListener("change", () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
 
-      const res = await fetch("/predict", {
-        method: "POST",
-        body: formData
-      });
+        async function predict() {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select an image first.");
+                return;
+            }
 
-      const data = await res.json();
-      document.getElementById("result").innerText =
-        `Prediction: ${data.predicted_class} (Confidence: ${(data.confidence * 100).toFixed(2)}%)`;
-    }
-  </script>
+            const formData = new FormData();
+            formData.append("file", file);
+
+            resultDiv.innerHTML = "Predicting...";
+
+            try {
+                const response = await fetch("/predict", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error("Prediction request failed");
+                }
+
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <strong>Prediction:</strong> ${data.predicted_class} <br>
+                    <strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = "Error: " + error.message;
+            }
+        }
+    </script>
+
 </body>
 </html>
