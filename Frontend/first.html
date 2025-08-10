@@ -3,485 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FarmAssist - Your Digital Farming Companion</title>
+    <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'farm-green': '#2d5016',
-                        'farm-light': '#4ade80',
-                        'farm-dark': '#166534'
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        .weather-icon {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+    @keyframes slideInLeft {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    .animate-slideInLeft {
+      animation: slideInLeft 1.2s ease-out forwards;
+    }
+
+    .animate-slideInRight {
+      animation: slideInRight 1.2s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-green-50 font-sans">
-    <!-- Header -->
-    <header class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="text-3xl">🌱</div>
-                    <h1 class="text-2xl font-bold">FarmAssist</h1>
-                </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#home" class="hover:text-green-200 transition-colors">Home</a>
-                    <a href="#services" class="hover:text-green-200 transition-colors">Services</a>
-                    <a href="#about" class="hover:text-green-200 transition-colors">About</a>
-                    <a href="#contact" class="hover:text-green-200 transition-colors">Contact</a>
-                </nav>
-                <button class="md:hidden text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="gradient-bg text-white py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold mb-6">Smart Farming Solutions</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering farmers with AI-powered tools for better crop management, disease detection, and market insights</p>
-            <button class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors">
-                Get Started Today
-            </button>
-        </div>
-    </section>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="text-green-600 font-bold text-xl flex items-center gap-2">
+            Krishi Advisor
+      </a>
 
-    <!-- Main Services -->
-    <section id="services" class="py-16">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-farm-green mb-12">Our Smart Farming Tools</h2>
-            
-            <!-- Service Cards Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Chatbot Card -->
-                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-green-500">
-                    <div class="text-4xl mb-4">🤖</div>
-                    <h3 class="text-xl font-bold text-farm-green mb-3">AI Farm Assistant</h3>
-                    <p class="text-gray-600 mb-4">Get instant answers to your farming questions with our intelligent chatbot</p>
-                    <button onclick="openChatbot()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
-                        Start Chat
-                    </button>
-                </div>
+      <!-- Menu for Desktop -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="text-gray-700 hover:text-green-600">Home</a>
+        <a href="#" class="text-gray-700 hover:text-green-600">Disease Detection</a>
+        <a href="#" class="text-gray-700 hover:text-green-600">Weather</a>
+        <a href="#" class="text-gray-700 hover:text-green-600">About</a>
+      </div>
 
-                <!-- Disease Detection Card -->
-                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-red-500">
-                    <div class="text-4xl mb-4">🥔</div>
-                    <h3 class="text-xl font-bold text-farm-green mb-3">Potato Disease Detection</h3>
-                    <p class="text-gray-600 mb-4">Upload potato leaf images to detect diseases early and get treatment recommendations</p>
-                    <button onclick="openDiseaseDetection()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
-                        Detect Disease
-                    </button>
-                </div>
+      <!-- chatBot Button -->
+      <div class="hidden md:block">
+        <a href="#" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+          Chat with Us 
+        </a>
+      </div>
 
-                <!-- Weather & Crop Suggestion Card -->
-                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-blue-500">
-                    <div class="text-4xl mb-4 weather-icon">🌤️</div>
-                    <h3 class="text-xl font-bold text-farm-green mb-3">Weather & Crop Advisor</h3>
-                    <p class="text-gray-600 mb-4">Get weather forecasts and crop recommendations based on seasonal conditions</p>
-                    <button onclick="openWeatherAdvisor()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        Check Weather
-                    </button>
-                </div>
-            </div>
-
-            <!-- Market Price Dashboard -->
-            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-2xl font-bold text-farm-green flex items-center">
-                        <span class="text-3xl mr-3">📊</span>
-                        Market Price Dashboard
-                    </h3>
-                    <button onclick="refreshPrices()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
-                        Refresh Prices
-                    </button>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="priceGrid">
-                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                        <h4 class="font-semibold text-farm-green">Wheat</h4>
-                        <p class="text-2xl font-bold text-green-600">₹2,150/quintal</p>
-                        <p class="text-sm text-green-500">↗ +2.5% from yesterday</p>
-                    </div>
-                    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                        <h4 class="font-semibold text-farm-green">Rice</h4>
-                        <p class="text-2xl font-bold text-yellow-600">₹3,200/quintal</p>
-                        <p class="text-sm text-yellow-500">→ No change</p>
-                    </div>
-                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                        <h4 class="font-semibold text-farm-green">Potato</h4>
-                        <p class="text-2xl font-bold text-red-600">₹1,800/quintal</p>
-                        <p class="text-sm text-red-500">↘ -1.2% from yesterday</p>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                        <h4 class="font-semibold text-farm-green">Tomato</h4>
-                        <p class="text-2xl font-bold text-blue-600">₹2,500/quintal</p>
-                        <p class="text-sm text-blue-500">↗ +5.8% from yesterday</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Crop Calendar -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h3 class="text-2xl font-bold text-farm-green mb-6 flex items-center">
-                    <span class="text-3xl mr-3">📅</span>
-                    Seasonal Crop Calendar
-                </h3>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-green-700 mb-3">🌸 Spring (Mar-May)</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between">
-                                <span class="text-sm">Wheat</span>
-                                <span class="text-xs bg-green-200 px-2 py-1 rounded">Harvest</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Cotton</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Sugarcane</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-yellow-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-yellow-700 mb-3">☀️ Summer (Jun-Aug)</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between">
-                                <span class="text-sm">Rice</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Maize</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Cotton</span>
-                                <span class="text-xs bg-orange-200 px-2 py-1 rounded">Care</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-orange-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-orange-700 mb-3">🍂 Monsoon (Sep-Nov)</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between">
-                                <span class="text-sm">Rice</span>
-                                <span class="text-xs bg-green-200 px-2 py-1 rounded">Harvest</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Cotton</span>
-                                <span class="text-xs bg-green-200 px-2 py-1 rounded">Harvest</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Potato</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-blue-700 mb-3">❄️ Winter (Dec-Feb)</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between">
-                                <span class="text-sm">Wheat</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Potato</span>
-                                <span class="text-xs bg-green-200 px-2 py-1 rounded">Harvest</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm">Mustard</span>
-                                <span class="text-xs bg-blue-200 px-2 py-1 rounded">Sow</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-farm-green text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="text-2xl">🌱</div>
-                        <h3 class="text-xl font-bold">FarmAssist</h3>
-                    </div>
-                    <p class="text-green-200">Empowering farmers with smart technology for sustainable agriculture.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Services</h4>
-                    <ul class="space-y-2 text-green-200">
-                        <li>AI Chatbot</li>
-                        <li>Disease Detection</li>
-                        <li>Weather Forecasting</li>
-                        <li>Market Prices</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Support</h4>
-                    <ul class="space-y-2 text-green-200">
-                        <li>Help Center</li>
-                        <li>Contact Us</li>
-                        <li>Training Videos</li>
-                        <li>Community Forum</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Contact</h4>
-                    <div class="space-y-2 text-green-200">
-                        <p>📞 1800-FARM-HELP</p>
-                        <p>📧 support@farmassist.com</p>
-                        <p>📍 Agricultural Technology Center</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-green-600 mt-8 pt-8 text-center text-green-200">
-                <p>&copy; 2024 FarmAssist. All rights reserved. Built for farmers, by farmers.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modals -->
-    <!-- Chatbot Modal -->
-    <div id="chatbotModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-xl max-w-md w-full max-h-96 flex flex-col">
-                <div class="bg-green-500 text-white p-4 rounded-t-xl flex justify-between items-center">
-                    <h3 class="font-bold">🤖 Farm Assistant</h3>
-                    <button onclick="closeChatbot()" class="text-white hover:text-gray-200">✕</button>
-                </div>
-                <div class="flex-1 p-4 overflow-y-auto" id="chatMessages">
-                    <div class="bg-green-100 p-3 rounded-lg mb-3">
-                        <p class="text-sm">Hello! I'm your AI farm assistant. Ask me about crops, weather, diseases, or farming techniques!</p>
-                    </div>
-                </div>
-                <div class="p-4 border-t">
-                    <div class="flex space-x-2">
-                        <input type="text" id="chatInput" placeholder="Ask me anything about farming..." class="flex-1 border rounded-lg px-3 py-2 focus:outline-none focus:border-green-500">
-                        <button onclick="sendMessage()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        ☰
+      </button>
     </div>
 
-    <!-- Disease Detection Modal -->
-    <div id="diseaseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-xl max-w-md w-full">
-                <div class="bg-red-500 text-white p-4 rounded-t-xl flex justify-between items-center">
-                    <h3 class="font-bold">🥔 Potato Disease Detection</h3>
-                    <button onclick="closeDiseaseDetection()" class="text-white hover:text-gray-200">✕</button>
-                </div>
-                <div class="p-6">
-                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center mb-4">
-                        <div class="text-4xl mb-2">📷</div>
-                        <p class="text-gray-600 mb-4">Upload a photo of potato leaves</p>
-                        <input type="file" id="diseaseImage" accept="image/*" class="hidden" onchange="analyzeDisease()">
-                        <button onclick="document.getElementById('diseaseImage').click()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
-                            Choose Image
-                        </button>
-                    </div>
-                    <div id="diseaseResult" class="hidden">
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                            <h4 class="font-bold text-yellow-800">Analysis Result:</h4>
-                            <p class="text-yellow-700" id="diseaseText">Early Blight detected with 85% confidence</p>
-                            <p class="text-sm text-yellow-600 mt-2">Recommendation: Apply copper-based fungicide and improve air circulation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+      <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-green-100">Home</a>
+      <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-green-100">Disease Detection</a>
+      <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-green-100">Weather</a>
+      <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-green-100">About</a>
+      <a href="#" class="block px-4 py-2 bg-green-500 text-white hover:bg-green-600">
+        Chat with Us
+      </a>
     </div>
+  </nav>
+  <div class="home">
+  </div>
+  <div class="home bg-cover bg-center h-screen flex items-center justify-start" 
+    style="background-image: url('https://i.pinimg.com/1200x/8a/99/46/8a9946a8b667a6e7c792eb8b04beced0.jpg');">
+    <div class="flex justify-start h-full bg-black bg-opacity-40">
+        <!-- Container -->
+<div class="flex justify-between items-center px-16 py-10">
 
-    <!-- Weather Advisor Modal -->
-    <div id="weatherModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-xl max-w-lg w-full">
-                <div class="bg-blue-500 text-white p-4 rounded-t-xl flex justify-between items-center">
-                    <h3 class="font-bold">🌤️ Weather & Crop Advisor</h3>
-                    <button onclick="closeWeatherAdvisor()" class="text-white hover:text-gray-200">✕</button>
-                </div>
-                <div class="p-6">
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Your Location</label>
-                        <input type="text" id="locationInput" placeholder="Enter your city/district" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500">
-                    </div>
-                    <button onclick="getWeatherAdvice()" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 mb-4">
-                        Get Weather & Crop Advice
-                    </button>
-                    <div id="weatherResult" class="hidden">
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div class="bg-blue-50 p-4 rounded-lg text-center">
-                                <div class="text-2xl mb-1">🌤️</div>
-                                <p class="text-sm text-gray-600">Today</p>
-                                <p class="font-bold">28°C</p>
-                            </div>
-                            <div class="bg-green-50 p-4 rounded-lg text-center">
-                                <div class="text-2xl mb-1">🌧️</div>
-                                <p class="text-sm text-gray-600">Tomorrow</p>
-                                <p class="font-bold">25°C</p>
-                            </div>
-                        </div>
-                        <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded">
-                            <h4 class="font-bold text-green-800">Crop Recommendation:</h4>
-                            <p class="text-green-700">Perfect weather for sowing wheat and mustard. Avoid rice cultivation due to low rainfall prediction.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <!-- Left Paragraph -->
+  <div class="w-3/5 animate-slideInLeft ">
+    <h1 class="text-white text-5xl font-bold leading-tight hover:text-green-600 mb-6">
+      Empowering farmers with AI-driven crop disease detection, weather-based farming tips, 
+      and market insights — all in one place.
+    </h1>
+  </div>
 
-    <script>
-        // Chatbot functionality
-        function openChatbot() {
-            document.getElementById('chatbotModal').classList.remove('hidden');
-        }
-
-        function closeChatbot() {
-            document.getElementById('chatbotModal').classList.add('hidden');
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const messages = document.getElementById('chatMessages');
-            
-            if (input.value.trim()) {
-                // Add user message
-                const userMsg = document.createElement('div');
-                userMsg.className = 'bg-gray-100 p-3 rounded-lg mb-3 ml-8';
-                userMsg.innerHTML = `<p class="text-sm">${input.value}</p>`;
-                messages.appendChild(userMsg);
-
-                // Simulate AI response
-                setTimeout(() => {
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'bg-green-100 p-3 rounded-lg mb-3 mr-8';
-                    aiMsg.innerHTML = `<p class="text-sm">Based on your question about "${input.value}", I recommend checking soil moisture levels and considering organic fertilizers for better crop yield.</p>`;
-                    messages.appendChild(aiMsg);
-                    messages.scrollTop = messages.scrollHeight;
-                }, 1000);
-
-                input.value = '';
-                messages.scrollTop = messages.scrollHeight;
-            }
-        }
-
-        // Disease Detection functionality
-        function openDiseaseDetection() {
-            document.getElementById('diseaseModal').classList.remove('hidden');
-        }
-
-        function closeDiseaseDetection() {
-            document.getElementById('diseaseModal').classList.add('hidden');
-            document.getElementById('diseaseResult').classList.add('hidden');
-        }
-
-        function analyzeDisease() {
-            const result = document.getElementById('diseaseResult');
-            setTimeout(() => {
-                result.classList.remove('hidden');
-            }, 2000);
-        }
-
-        // Weather Advisor functionality
-        function openWeatherAdvisor() {
-            document.getElementById('weatherModal').classList.remove('hidden');
-        }
-
-        function closeWeatherAdvisor() {
-            document.getElementById('weatherModal').classList.add('hidden');
-            document.getElementById('weatherResult').classList.add('hidden');
-        }
-
-        function getWeatherAdvice() {
-            const location = document.getElementById('locationInput').value;
-            const result = document.getElementById('weatherResult');
-            
-            if (location.trim()) {
-                setTimeout(() => {
-                    result.classList.remove('hidden');
-                }, 1500);
-            } else {
-                alert('Please enter your location first');
-            }
-        }
-
-        // Market Price refresh
-        function refreshPrices() {
-            const prices = [
-                { name: 'Wheat', price: Math.floor(Math.random() * 500) + 2000, change: (Math.random() * 10 - 5).toFixed(1) },
-                { name: 'Rice', price: Math.floor(Math.random() * 800) + 2800, change: (Math.random() * 10 - 5).toFixed(1) },
-                { name: 'Potato', price: Math.floor(Math.random() * 600) + 1500, change: (Math.random() * 10 - 5).toFixed(1) },
-                { name: 'Tomato', price: Math.floor(Math.random() * 1000) + 2000, change: (Math.random() * 10 - 5).toFixed(1) }
-            ];
-
-            const grid = document.getElementById('priceGrid');
-            grid.innerHTML = '';
-
-            prices.forEach((crop, index) => {
-                const colors = ['green', 'yellow', 'red', 'blue'];
-                const color = colors[index];
-                const arrow = crop.change > 0 ? '↗' : crop.change < 0 ? '↘' : '→';
-                
-                grid.innerHTML += `
-                    <div class="bg-${color}-50 p-4 rounded-lg border-l-4 border-${color}-500">
-                        <h4 class="font-semibold text-farm-green">${crop.name}</h4>
-                        <p class="text-2xl font-bold text-${color}-600">₹${crop.price}/quintal</p>
-                        <p class="text-sm text-${color}-500">${arrow} ${Math.abs(crop.change)}% from yesterday</p>
-                    </div>
-                `;
-            });
-        }
-
-        // Chat input enter key support
-        document.getElementById('chatInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Location input enter key support
-        document.getElementById('locationInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                getWeatherAdvice();
-            }
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a441a7e35a919d',t:'MTc1NDM3NTUzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <!-- Right Box -->
+  <div class="w-1/5 bg-white/80 p-6 rounded-lg shadow-lg animate-slideInRight">
+    <h2 class="text-green-700 text-2xl font-semibold mb-4">Why Choose Krishi Advisor?</h2>
+    <p class="text-gray-700 mb-4">
+      We help farmers make smarter decisions with AI-powered tools that detect crop diseases early, 
+      provide real-time weather updates, and share market prices for better profits.
+    </p>
+    <p class="text-gray-700 mb-6">
+      Whether you grow wheat, rice, or vegetables, our platform is designed to support you every step 
+      of the way.
+    </p>
+    <a href="about.html" 
+       class="bg-green-500 text-white px-5 py-3 rounded-lg hover:bg-green-600">
+      Get Started
+    </a>
+  </div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
 </html>
