@@ -3,9 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Krishi Advisor - About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>hello world</h1>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="text-green-700 font-bold text-xl flex items-center gap-2">
+                Krishi Advisor
+            </a>
+
+            <div class="hidden md:flex space-x-6">
+                <a href="first.html" class="text-gray-700 hover:text-green-700 transition">Home</a>
+                <a href="#" class="text-gray-700 hover:text-green-700 transition">Disease Detection</a>
+                <a href="#" class="text-gray-700 hover:text-green-700 transition">Weather</a>
+                <a href="#" class="text-green-700 font-semibold">About</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+                    Chat with Us
+                </a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none text-2xl">
+                ☰
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <a href="first.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50">Home</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-green-50">Disease Detection</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-green-50">Weather</a>
+            <a href="#" class="block px-4 py-2 text-green-700 font-semibold">About</a>
+            <a href="#" class="block px-4 py-2 bg-green-600 text-white hover:bg-green-700">
+                Chat with Us
+            </a>
+        </div>
+    </nav>
+
+    <section class="bg-white py-16 px-6 md:px-20 mt-20">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-green-700 mb-4">
+                Empowering Agriculture with Data
+            </h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Leveraging Tableau visualizations and modern technology to provide actionable insights 
+                for farmers, policymakers, and agricultural researchers.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 items-center gap-8">
+            <div class="space-y-4">
+                <h2 class="text-4xl font-bold text-green-800">Introduction</h2>
+                <p class="text-gray-700 text-3xl leading-relaxed">
+                    Our platform transforms raw agricultural data into meaningful visual insights. 
+                    By integrating state-of-the-art Tableau dashboards with accurate agricultural datasets, 
+                    we make complex patterns and trends easy to interpret for all stakeholders in the farming ecosystem.
+                </p>
+            </div>
+            <div class="flex justify-center md:justify-end">
+                <img src="/Frontend/images/farmersweb1-removebg-preview.png" 
+                     alt="Farmer" 
+                     class="w-64 h-auto object-contain">
+            </div>
+        </div>
+    </section>
+
+    <section id="tableau-section" class="py-16 px-6 md:px-20 bg-green-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-green-700 mb-6">
+                Crop Production Analysis
+            </h2>
+            <p class="text-gray-700 max-w-3xl mx-auto text-center mb-12">
+                These Tableau dashboards present a comprehensive view of agricultural productivity across different states. 
+                The first visualization highlights the **maximum crop production** for each state, helping identify regional strengths.  
+                The second dashboard dives deeper into **year-wise and crop-wise trends**, enabling better planning for future cultivation strategies.
+            </p>
+
+            <div class="mb-12 flex justify-center">
+                <div class='tableauPlaceholder' id='viz1754908295096' style='position: relative'>
+                    <noscript>
+                        <a href='#'><img alt='Dashboard 2' src='https://public.tableau.com/static/images/Bo/Book2_17549082777370/Dashboard2/1_rss.png' style='border: none' /></a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='name' value='Book2_17549082777370/Dashboard2' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                        <param name='filter' value='publish=yes' />
+                    </object>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <div class='tableauPlaceholder' id='viz1754913206189' style='position: relative'>
+                    <noscript>
+                        <a href='#'><img alt='Dashboard 3' src='https://public.tableau.com/static/images/Bo/Book3_17549131677590/Dashboard3/1_rss.png' style='border: none' /></a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='name' value='Book3_17549131677590/Dashboard3' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                        <param name='filter' value='publish=yes' />
+                    </object>
+                </div>
+            </div>
+<section class="bg-white py-16 px-6 md:px-20 border-t border-green-100">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-green-700 mb-4">Our Commitment</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+            At <span class="font-semibold text-green-700">Krishi Advisor</span>, we believe that 
+            the future of farming lies in the power of data-driven decisions.  
+            By combining accurate agricultural datasets, modern visualization tools, and user-friendly design,  
+            we aim to bridge the gap between technology and the people who feed the world.
+        </p>
+        <p class="text-gray-700 leading-relaxed mb-10">
+            Whether you are a farmer looking to improve yields, a policymaker shaping agricultural strategies,  
+            or a researcher studying crop patterns, our platform is here to provide clear, actionable insights  
+            that can make a real difference in the field.
+        </p>
+        <a href="first.html" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition">
+            Start Exploring
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-green-700 text-white py-6 mt-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm">&copy; 2025 Krishi Advisor. All Rights Reserved.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+            <a href="#" class="hover:text-green-200">Made by Faham & Nigar</a>
+           
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </section>
+
+    <!-- Tableau Script -->
+    <script type='text/javascript'>
+        function initTableau(id, width, height) {
+            var divElement = document.getElementById(id);
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = width;
+            vizElement.style.height = height;
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        }
+        initTableau('viz1754908295096', '1000px', '827px');
+        initTableau('viz1754913206189', '1000px', '827px');
+    </script>
+
 </body>
 </html>
