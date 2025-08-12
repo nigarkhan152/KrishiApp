@@ -15,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.mount("/images", StaticFiles(directory="Frontend/images"), name="images")
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 MODEL = tf.keras.models.load_model("models/potato_disease_models.h5")
 
