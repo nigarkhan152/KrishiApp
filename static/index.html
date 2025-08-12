@@ -4,55 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potato Leaf Disease Classifier</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        #preview {
-            max-width: 300px;
-            margin: 20px auto;
-            display: none;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-        }
-        input[type="file"] {
-            margin: 20px 0;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #444;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Potato Leaf Disease Classifier</h1>
-    <p>Upload an image of a potato leaf to detect if it's healthy or has a disease.</p>
+<body class="bg-gray-50 font-sans">
 
-    <input type="file" id="fileInput" accept="image/*">
-    <br>
-    <img id="preview" alt="Image Preview">
-    <br>
-    <button onclick="predict()">Predict</button>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/" class="text-green-600 font-bold text-2xl">Krishi Advisor</a>
 
-    <div id="result"></div>
+            <!-- Menu for Desktop -->
+            <div class="hidden md:flex space-x-8">
+                <a href="/" class="text-gray-700 hover:text-green-600 transition">Home</a>
+                <a href="/disease" class="text-gray-700 hover:text-green-600 transition">Disease Detection</a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition">Weather</a>
+                <a href="/about" class="text-gray-700 hover:text-green-600 transition">About</a>
+            </div>
+
+            <!-- Chat Button -->
+            <a href="#" class="hidden md:block bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition">
+                Chat with Us
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-700 text-2xl">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-16">
+        <div class="container mx-auto px-6 text-center max-w-2xl bg-white shadow-lg rounded-xl p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">Potato Leaf Disease Classifier</h1>
+            <p class="text-gray-600 mb-8">
+                Upload an image of a potato leaf to detect if it's healthy or has a disease.
+            </p>
+
+            <!-- File Upload -->
+            <input type="file" id="fileInput" accept="image/*" 
+                   class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer p-2 mb-6">
+            
+            <!-- Image Preview -->
+            <img id="preview" class="hidden mx-auto max-w-xs rounded-lg border border-gray-300 shadow-sm mb-6" alt="Preview">
+
+            <!-- Predict Button -->
+            <button onclick="predict()" 
+                    class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition">
+                Predict
+            </button>
+
+            <!-- Result -->
+            <div id="result" class="mt-6 text-lg text-gray-700 font-medium"></div>
+        </div>
+    </main>
 
     <script>
         const fileInput = document.getElementById("fileInput");
@@ -65,7 +69,7 @@
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     preview.src = e.target.result;
-                    preview.style.display = "block";
+                    preview.classList.remove("hidden");
                 };
                 reader.readAsDataURL(file);
             }
@@ -81,7 +85,7 @@
             const formData = new FormData();
             formData.append("file", file);
 
-            resultDiv.innerHTML = "Predicting...";
+            resultDiv.innerHTML = "⏳ Predicting...";
 
             try {
                 const response = await fetch("/predict", {
@@ -89,19 +93,18 @@
                     body: formData
                 });
 
-                if (!response.ok) {
-                    throw new Error("Prediction request failed");
-                }
+                if (!response.ok) throw new Error("Prediction request failed");
 
                 const data = await response.json();
                 resultDiv.innerHTML = `
-                    <strong>Prediction:</strong> ${data.predicted_class} <br>
-                    <strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%
+                    <span class="text-green-600 font-bold">Prediction:</span> ${data.predicted_class} <br>
+                    <span class="text-green-600 font-bold">Confidence:</span> ${(data.confidence * 100).toFixed(2)}%
                 `;
             } catch (error) {
-                resultDiv.innerHTML = "Error: " + error.message;
+                resultDiv.innerHTML = `<span class="text-red-500">Error: ${error.message}</span>`;
             }
         }
     </script>
+
 </body>
 </html>

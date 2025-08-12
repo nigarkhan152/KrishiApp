@@ -55,6 +55,19 @@ async def predict(file: UploadFile = File(...)):
         "confidence": confidence
     })
 @app.get("/", response_class=HTMLResponse)
-def read_root():
-    with open("static/index.html") as f:
+async def home():
+    with open(os.path.join("Frontend", "first.html"), encoding="utf-8") as f:
         return f.read()
+
+@app.get("/disease", response_class=HTMLResponse)
+async def disease_page():
+    with open(os.path.join("static", "index.html"), encoding="utf-8") as f:
+        return f.read()
+
+@app.get("/about", response_class=HTMLResponse)
+async def about_page():
+    with open(os.path.join("Frontend", "about.html"), encoding="utf-8") as f:
+        return f.read()
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
